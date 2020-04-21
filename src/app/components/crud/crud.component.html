@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://cdn.svgporn.com/logos/chromatic-icon.svg" width="30" height="30" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <button (click)="CerrarSesion()" type="button" class="btn btn-info">Cerrar Sesion</button>
+
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</nav>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-4">
+            <form>
+                <div class="form-group">
+                   
+                    <input [(ngModel)]="username" name="username" placeholder="username" type="text" class="form-control"   aria-describedby="emailHelp">
+                 
+                </div>
+                <div class="form-group">
+                    <input  [(ngModel)]="firstname" name="firstname" placeholder="Firstname" type="text" class="form-control" >
+                </div>
+                <div class="form-group"> 
+                    <input [(ngModel)]="lastname" name="lastname"  placeholder="Lastname" type="text" class="form-control" >
+                </div>
+                <button (click)="addUser()" type="submit" class="btn btn-primary btn-block">Guardar Usuario</button>
+                <button (click)="updateUser()" type="submit" class="btn btn-warning btn-block">Guardar Cambios</button>
+                <button (click)="addUser()" type="submit" class="btn btn-success btn-block">Cargar CSV</button>
+
+            </form>
+        </div>
+
+        <div class="col-8">
+            <div class="row">
+
+                <div *ngFor="let usuario of Usuarios" class="col-4">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">{{usuario.username}}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{usuario.firstname}}</h5>
+                            <h5 class="card-title">{{usuario.lastname}}</h5>
+                          
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit"
+                               (click)="getDataUser(usuario.codu,usuario.username,usuario.firstname,usuario.lastname)"
+                                class="btn btn-warning btn-block">Edit User</button>
+                            <button (click)="deleteUser(usuario.codu)" type="submit"  class="btn btn-danger btn-block">Delete
+                                User</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
